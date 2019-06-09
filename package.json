@@ -1,0 +1,23 @@
+{
+  "name": "awesome-boilerplates",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Denis Smorodin <smodean73@gmail.com>",
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  },
+  "keywords": [
+    "boilerplates",
+    "react-boilerplates"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smodean/awesome-boilerplates"
+  },
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

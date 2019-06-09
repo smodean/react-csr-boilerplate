@@ -1,0 +1,32 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier", "tslint-config-airbnb", "tslint-react", "tslint:latest"],
+  "defaultSeverity": "error",
+  "rules": {
+    "prettier": [true, "./.prettierrc"],
+    "max-line-length": [true, 120],
+    "ordered-imports": false,
+    "import-name": false,
+    "no-implicit-dependencies": false,
+
+    "quotemark": [true, "single"],
+    "no-submodule-imports": false,
+    "no-console": [true],
+    "no-namespace": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "jsx-no-lambda": ["tslint-config-airbnb"],
+    "object-literal-sort-keys": [true, "shorthand-first"],
+    "variable-name": [true, "ban-keywords", "allow-pascal-case"],
+    "function-name": [
+      true,
+      {
+        "method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+        "private-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+        "protected-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+        "static-method-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$",
+        "function-regex": "^\\*?\\[?[a-zA-Z][\\w\\d\\.]*\\]?$"
+      }
+    ]
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "jsRules": {}
+}
