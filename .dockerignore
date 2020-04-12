@@ -1,0 +1,7 @@
+.git
+node_modules
+npm-debug
+Dockerfile
+.dockerignore
+README.md
+.eslintrc.js
