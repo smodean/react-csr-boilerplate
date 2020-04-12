@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import ROUTES_WAYS from '@constants/RoutesWays';
+import { PRIVATE_ROUTES_WAYS } from '@constants/RoutesWays';
 
 import PrivateRoutesLoadable from './PrivateRoutes.loadable';
 
-const { Main } = PrivateRoutesLoadable;
+const { Main } = new PrivateRoutesLoadable();
 
 const PrivateRoutes: FC = () => (
   <>
-    <Route exact component={Main} path={ROUTES_WAYS.ROOT} />
-    <Route path="*" render={(): JSX.Element => <Redirect to={ROUTES_WAYS.ROOT} />} />
+    <Route exact component={Main} path={PRIVATE_ROUTES_WAYS.MAIN} />
+    <Route path="*" render={(): JSX.Element => <Redirect to={PRIVATE_ROUTES_WAYS.MAIN} />} />
   </>
 );
 

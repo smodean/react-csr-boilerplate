@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { useLocalizationDictionary } from '@hooks/useLocalization';
+
 import { Props } from './LoadableLoading.types';
 
 const LoadableLoading: FC<Props> = (props) => {
@@ -7,20 +9,22 @@ const LoadableLoading: FC<Props> = (props) => {
     isLoading, timedOut, error, pastDelay,
   } = props;
 
+  const localizationDictionary = useLocalizationDictionary();
+
   if (isLoading) {
     if (timedOut) {
-      return <div>Loader timed out!</div>;
+      return <div>{localizationDictionary.LOADING_TIMEOUT}</div>;
     }
 
     if (pastDelay) {
-      return <div>Loading...</div>;
+      return <div>{localizationDictionary.LOADING}</div>;
     }
 
     return null;
   }
 
   if (error) {
-    return <div>Error! Component failed to load</div>;
+    return <div>{localizationDictionary.LOADING_ERROR}</div>;
   }
 
   return null;

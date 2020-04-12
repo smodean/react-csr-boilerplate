@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import PublicRoutes from './PublicRoutes.container';
 
-export default PublicRoutes;
+export default memo(PublicRoutes);

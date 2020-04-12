@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
 
-const Main: FC = () => (
-  <div>111111111111</div>
-);
+import { useLocalizationDictionary } from '@hooks/useLocalization';
+
+const Main: FC = () => {
+  const localizationDictionary = useLocalizationDictionary();
+
+  return (
+    <div>{localizationDictionary.MAIN_PAGE}</div>
+  );
+};
 
 export default Main;

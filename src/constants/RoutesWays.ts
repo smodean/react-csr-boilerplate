@@ -1,6 +1,7 @@
-enum ROUTES_WAYS {
-    ROOT = '/',
+export enum PUBLIC_ROUTES_WAYS {
     LOGIN = '/login'
 }
 
-export default ROUTES_WAYS;
+export enum PRIVATE_ROUTES_WAYS {
+    MAIN = '/',
+}
