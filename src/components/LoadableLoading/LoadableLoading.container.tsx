@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { useLocalizationDictionary } from '@hooks/useLocalization';
 
+import { Helmet } from 'react-helmet';
 import { Props } from './LoadableLoading.types';
 
 const LoadableLoading: FC<Props> = (props) => {
@@ -10,21 +11,47 @@ const LoadableLoading: FC<Props> = (props) => {
   } = props;
 
   const localizationDictionary = useLocalizationDictionary();
+  const { LOADING_TIMEOUT, LOADING, LOADING_ERROR } = localizationDictionary;
 
   if (isLoading) {
     if (timedOut) {
-      return <div>{localizationDictionary.LOADING_TIMEOUT}</div>;
+      return (
+        <>
+          <Helmet>
+            <title>{LOADING_TIMEOUT}</title>
+          </Helmet>
+          <div>{LOADING_TIMEOUT}</div>
+        </>
+      );
     }
 
     if (pastDelay) {
-      return <div>{localizationDictionary.LOADING}</div>;
+      return (
+        <>
+          <Helmet>
+            <title>{LOADING}</title>
+          </Helmet>
+          <div>{LOADING}</div>
+        </>
+      );
     }
 
-    return null;
+    return (
+      <Helmet>
+        <title>{LOADING}</title>
+      </Helmet>
+    );
   }
 
   if (error) {
-    return <div>{localizationDictionary.LOADING_ERROR}</div>;
+    return (
+      <>
+        <Helmet>
+          <title>{LOADING_ERROR}</title>
+        </Helmet>
+        <div>{LOADING_ERROR}</div>
+      </>
+    );
   }
 
   return null;
