@@ -9,7 +9,6 @@ import Env from '../Env';
 
 const env = new Env({
   DEV_SERVER_PORT: 3000,
-  OPEN_BROWSER: true,
 });
 
 const config: Configuration = {

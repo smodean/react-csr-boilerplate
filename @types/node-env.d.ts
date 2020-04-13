@@ -7,5 +7,6 @@ declare namespace NodeJS {
     readonly OPEN_BROWSER?: 'true' | 'false';
     readonly DEV_SERVER_PORT?: string;
     readonly PROXY_TARGET?: string;
+    readonly ANALYZE_BUNDLE?: 'true' | 'false';
   }
 }

@@ -1,19 +1,13 @@
 import { Plugin as WebpackPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin, { Options as HtmlWebpackPluginOptions } from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import paths from '../../paths';
 import Env from '../../Env';
 
 export default function getWebpackPlugins(env: Env): WebpackPlugin[] {
   const plugins: WebpackPlugin[] = [];
-
-  if (env.IS_PRODUCTION) {
-    plugins.push(new MiniCssExtractPlugin({
-      chunkFilename: '[name].[contenthash].css',
-      filename: '[name].[contenthash].css',
-    }));
-  }
 
   const minifyHtmlWebpackPlugin = ((): HtmlWebpackPluginOptions['minify'] => {
     if (env.IS_PRODUCTION) {
@@ -42,6 +36,20 @@ export default function getWebpackPlugins(env: Env): WebpackPlugin[] {
   });
 
   plugins.push(htmlWebpackPlugin);
+
+  if (env.IS_PRODUCTION) {
+    plugins.push(new MiniCssExtractPlugin({
+      chunkFilename: '[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
+    }));
+
+    if (env.ANALYZE_BUNDLE) {
+      plugins.push(new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: true,
+      }));
+    }
+  }
 
   return plugins;
 }

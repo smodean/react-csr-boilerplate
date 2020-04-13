@@ -33,6 +33,7 @@
     },
     "pretty": true,
     "strict": true,
+    "removeComments": true,
     "target": "esnext",
     "typeRoots": ["src/@types", "@types"],
     "types": ["node"]

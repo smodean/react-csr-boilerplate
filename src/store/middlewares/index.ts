@@ -7,16 +7,19 @@ const middlewaresCollection = ((): Middleware[] => {
   const defaultMiddlewares: Middleware[] = [epicMiddleware];
 
   if (process.env.NODE_ENV === 'production') {
-    return [
-      ...defaultMiddlewares,
-    ];
+    const productionMiddlewares = [...defaultMiddlewares];
+
+    return productionMiddlewares;
   }
 
   if (process.env.NODE_ENV === 'development') {
-    return [
-      ...defaultMiddlewares,
-      loggerMiddleware,
-    ];
+    const developmentMiddlewares = [...defaultMiddlewares];
+
+    if (loggerMiddleware) {
+      developmentMiddlewares.push(loggerMiddleware);
+    }
+
+    return developmentMiddlewares;
   }
 
   return defaultMiddlewares;

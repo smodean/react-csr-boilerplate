@@ -1,13 +1,14 @@
 import { Middleware } from 'redux';
-import { createLogger } from 'redux-logger';
 import { Action } from 'typesafe-actions';
 
-const loggerMiddleware: Middleware = createLogger({
-  actionTransformer: (action: Action) => ({ ...action, type: String(action.type) }),
-  collapsed: false,
-  level: 'info',
-  logger: console,
-  predicate: () => process.env.NODE_ENV === 'development',
-});
+const loggerMiddleware: Middleware | null = process.env.NODE_ENV === 'development'
+  ? require('redux-logger').createLogger({
+    actionTransformer: (action: Action) => ({ ...action }),
+    collapsed: false,
+    level: 'info',
+    logger: console,
+    predicate: () => process.env.NODE_ENV === 'development',
+  })
+  : null;
 
 export default loggerMiddleware;
