@@ -1,6 +1,5 @@
 {
   "author": "Denis Smorodin <smodean73@gmail.com>",
-  "description": "React boilerplate with Redux-observable",
   "dependencies": {
     "dayjs": "^1.8.24",
     "react": "^16.13.1",
@@ -17,6 +16,7 @@
     "rxjs": "^6.5.5",
     "typesafe-actions": "^5.1.0"
   },
+  "description": "React boilerplate with Redux-observable",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -26,6 +26,7 @@
     "@babel/preset-typescript": "^7.9.0",
     "@types/dotenv": "^8.2.0",
     "@types/html-webpack-plugin": "^3.2.2",
+    "@types/jest": "^25.2.1",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/node": "^13.9.2",
     "@types/react-dom": "^16.9.5",
@@ -33,12 +34,14 @@
     "@types/react-loadable": "^5.5.3",
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.3",
+    "@types/react-test-renderer": "^16.9.2",
     "@types/redux-logger": "^3.0.7",
     "@types/webpack": "^4.41.8",
     "@types/webpack-bundle-analyzer": "^2.13.3",
     "@types/webpack-dev-server": "^3.10.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
@@ -52,7 +55,10 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
+    "jest": "^25.3.0",
+    "jest-watch-typeahead": "^0.5.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "ts-node": "^8.8.1",
     "typescript": "^3.8.3",
@@ -63,7 +69,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "npm run lint && npm run test"
     }
   },
   "license": "MIT",
@@ -80,6 +87,7 @@
     "eslint": "eslint --ext .jsx,.js,.ts,.tsx src/",
     "lint": "npm run eslint && npm run tsc",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack/webpack.config.ts",
+    "test": "jest",
     "tsc": "tsc --noEmit --skipLibCheck"
   },
   "version": "1.0.0"

@@ -30,7 +30,7 @@ export default class Env implements EnvDefaults {
     return `\n\t${first}\n\t${middle}\n\t${last}\n`;
   }
 
-  private static parseStringToBoolean(value: 'true' | 'false' | undefined, defaultValue: boolean): boolean {
+  private static parseStringToBoolean(value: string | undefined, defaultValue: boolean): boolean {
     if (value === 'true' || value === 'false') {
       return JSON.parse(value);
     }

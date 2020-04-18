@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
 
 import { useLocalizationDictionary } from '@hooks/useLocalization';
 
-import { Helmet } from 'react-helmet';
 import { Props } from './LoadableLoading.types';
 
 const LoadableLoading: FC<Props> = (props) => {

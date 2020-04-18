@@ -3,11 +3,15 @@ import { Resolve as WebpackResolve } from 'webpack';
 
 import paths from '../../paths';
 
-function getAliases(tsConfig: { compilerOptions: { paths: { [key: string]: string } } }): { [key: string]: string } {
+interface DynamicObject<V = string> {
+  [key: string]: V;
+}
+
+function getAliases(tsConfig: { compilerOptions: { paths: DynamicObject } }): DynamicObject {
   const { compilerOptions } = tsConfig;
   const excessRegExp = /\/\*$/;
 
-  return Object.entries(compilerOptions.paths).reduce((accumulator, alias) => {
+  return Object.entries(compilerOptions.paths).reduce<DynamicObject>((accumulator, alias) => {
     const [aliasKey, aliasValuesCollection] = alias;
 
     const aliasValue = aliasValuesCollection[0];
@@ -23,7 +27,7 @@ function getAliases(tsConfig: { compilerOptions: { paths: { [key: string]: strin
       ...accumulator,
       [currentAliasKey]: resolve(paths.appSrc, ...currentAliasValueCollection),
     };
-  }, {} as { [key: string]: string });
+  }, {});
 }
 
 export default function getResolveConfig(): WebpackResolve {

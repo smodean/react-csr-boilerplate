@@ -1,19 +1,6 @@
-import { Store as ReduxStore, AnyAction, CombinedState } from 'redux';
+import { StateType } from 'typesafe-actions';
 
-import { StateLocalization } from '@storeData/localization/types';
+import rootReducer from '@storeData/rootReducer';
 
-export interface RootState {
-  localization: StateLocalization;
-}
-
+export type RootState = StateType<typeof rootReducer>;
 export type KeyOfRootState = keyof RootState;
-
-export type ValueOfRootState<K extends KeyOfRootState = KeyOfRootState> = RootState[K];
-
-export type Store = ReduxStore<CombinedState<RootState>, AnyAction> & {
-  dispatch: {};
-}
-
-export interface ConfigureStore {
-  store: Store;
-}

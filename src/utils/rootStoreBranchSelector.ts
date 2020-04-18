@@ -1,4 +1,6 @@
 import { RootState, KeyOfRootState } from '@@RootState';
 
-export const rootStoreBranchSelector = <T extends KeyOfRootState>(branch: T) =>
-  (state: RootState): RootState[T] => state[branch];
+export const rootStoreBranchSelector = <
+S extends Partial<RootState> = RootState,
+T extends KeyOfRootState = KeyOfRootState,
+>(branch: T) => (state: S): S[T] => state[branch];

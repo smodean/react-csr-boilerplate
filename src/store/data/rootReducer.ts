@@ -2,9 +2,7 @@ import { combineReducers } from 'redux';
 
 import localizationReducer from '@storeData/localization/reducer';
 
-import { RootState } from '@@RootState';
-
-const rootReducer = combineReducers<RootState>({
+const rootReducer = combineReducers({
   localization: localizationReducer,
 });
 

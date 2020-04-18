@@ -4,8 +4,8 @@ import { StateLocalization } from './types';
 import { LocalizationReducerActionTypes } from './actions.types';
 import { changeLocalizationAsync } from './actions';
 
-const initialStateLocalization: StateLocalization = {
-  locale: (localStorage.getItem('locale') || navigator.language) as StateLocalization['locale'],
+export const initialStateLocalization: StateLocalization = {
+  locale: (localStorage.getItem('locale') || navigator?.language) as StateLocalization['locale'] || 'en',
   localeLoading: false,
 };
 
