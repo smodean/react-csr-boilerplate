@@ -1,6 +1,11 @@
 import { Epic } from 'redux-observable';
 
-import { RootAction } from '@@RootAction';
+import { RootActionType } from '@@RootAction';
 import { RootState } from '@@RootState';
 
-export type EpicType = Epic<RootAction, RootAction, RootState>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface EpicDependencies {
+
+}
+
+export type EpicType = Epic<RootActionType, RootActionType, RootState, EpicDependencies>;

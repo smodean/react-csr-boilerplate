@@ -7,7 +7,7 @@ const config = {
   extends: ['airbnb', 'airbnb/hooks', 'plugin:@typescript-eslint/recommended'],
   overrides: [
     {
-      files: ['config/**/*.ts'],
+      files: ['config/**/*.ts', 'config/**/*.js'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
         'global-require': 'off',
@@ -22,13 +22,9 @@ const config = {
       },
     },
     {
-      files: ['*.js'],
+      files: ['config/**/*.js'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        'global-require': 'off',
-        'import/no-dynamic-require': 'off',
-        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

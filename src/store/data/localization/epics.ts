@@ -10,7 +10,7 @@ import { EpicType } from '@@EpicType';
 
 import { changeLocalizationAsync } from './actions';
 
-const changeLocalizationEpic: EpicType = (action$) => action$.pipe(
+export const changeLocalizationEpic: EpicType = (action$) => action$.pipe(
   filter(isActionOf(changeLocalizationAsync.request)),
   map((action) => {
     const { payload } = action;

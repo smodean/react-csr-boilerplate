@@ -1,8 +1,9 @@
 import { createEpicMiddleware } from 'redux-observable';
 
-import { RootAction } from '@@RootAction';
+import { RootActionType } from '@@RootAction';
 import { RootState } from '@@RootState';
+import { EpicDependencies } from '@@EpicType';
 
-const epicMiddleware = createEpicMiddleware<RootAction, RootAction, RootState>();
+const epicMiddleware = createEpicMiddleware<RootActionType, RootActionType, RootState, EpicDependencies>();
 
 export default epicMiddleware;
