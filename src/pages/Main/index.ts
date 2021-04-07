@@ -1,5 +1,1 @@
-import { memo } from 'react';
-
-import Main from './Main.container';
-
-export default memo(Main);
+export { Main } from './Main.container';

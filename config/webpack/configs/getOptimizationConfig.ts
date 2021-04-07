@@ -1,6 +1,6 @@
-import { Options as WebpackOptions } from 'webpack';
+import { Configuration } from '../webpack.types';
 
-export default function getOptimizationConfig(): WebpackOptions.Optimization {
+export function getOptimizationConfig(): Configuration['optimization'] {
   return {
     mergeDuplicateChunks: true,
     splitChunks: { chunks: 'all' },

@@ -1,26 +1,18 @@
+import { RootActionType } from '@@RootAction';
+
 import { createReducer } from 'typesafe-actions';
 
+import { changeLocalization } from './actions';
 import { StateLocalization } from './types';
-import { LocalizationReducerActionTypes } from './actions.types';
-import { changeLocalizationAsync } from './actions';
 
 export const initialStateLocalization: StateLocalization = {
-  locale: (localStorage.getItem('locale') || navigator?.language) as StateLocalization['locale'] || 'en',
-  localeLoading: false,
+  locale: localStorage.getItem('locale') as StateLocalization['locale'] || 'en',
 };
 
-const localizationReducer = createReducer<StateLocalization, LocalizationReducerActionTypes>(initialStateLocalization)
+export const localizationReducer = createReducer<StateLocalization, RootActionType>(
+  initialStateLocalization,
+)
   .handleAction(
-    changeLocalizationAsync.request,
-    (state): StateLocalization => ({ ...state, localeLoading: true }),
-  )
-  .handleAction(
-    changeLocalizationAsync.success,
-    (state, action): StateLocalization => ({ ...state, locale: action.payload, localeLoading: false }),
-  )
-  .handleAction(
-    changeLocalizationAsync.failure,
-    (state): StateLocalization => ({ ...state, localeLoading: false }),
+    changeLocalization,
+    (state, action): StateLocalization => ({ ...state, locale: action.payload }),
   );
-
-export default localizationReducer;

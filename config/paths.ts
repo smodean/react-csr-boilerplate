@@ -5,20 +5,16 @@ const appDirectory = realpathSync(process.cwd());
 
 export const resolveApp = (relativePath: string): string => resolve(appDirectory, relativePath);
 
-const paths = {
-  appBuild: resolveApp('build'),
-  appFavicon: resolveApp('public/favicon.ico'),
-  appHtml: resolveApp('public/index.html'),
-  appNodeModules: resolveApp('node_modules'),
-  appPackageJson: resolveApp('package.json'),
-  appPath: resolveApp('.'),
-  appPublic: resolveApp('public'),
-  appSrc: resolveApp('src'),
-  appTsConfig: resolveApp('tsconfig.json'),
-  dotenv: resolveApp('.env'),
-  dotenvDev: resolveApp('.env.dev'),
-  dotenvProd: resolveApp('.env.prod'),
-  publicPath: '/',
-} as const;
-
-export default paths;
+export const appBuild = resolveApp('build');
+export const appFavicon = resolveApp('public/favicon.ico');
+export const appHtml = resolveApp('public/index.html');
+export const appNodeModules = resolveApp('node_modules');
+export const appPackageJson = resolveApp('package.json');
+export const appPath = resolveApp('.');
+export const appPublic = resolveApp('public');
+export const appSrc = resolveApp('src');
+export const appTsConfig = resolveApp('tsconfig.json');
+export const dotenv = resolveApp('.env');
+export const dotenvDev = resolveApp('.env.dev');
+export const dotenvProd = resolveApp('.env.prod');
+export const publicPath = '/';

@@ -1,11 +1,11 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
-export default function useToggleState(
+export function useToggleState(
   initialState = false,
-): readonly [boolean, () => void, React.Dispatch<React.SetStateAction<boolean>>] {
+): readonly [boolean, VoidFunction, React.Dispatch<React.SetStateAction<boolean>>] {
   const [state, setState] = useState<boolean>(initialState);
 
-  const toggleState = useCallback<() => void>(() => setState((st) => !st), [setState]);
+  const toggleState = useCallback<VoidFunction>(() => setState((st) => !st), []);
 
   return [state, toggleState, setState] as const;
 }

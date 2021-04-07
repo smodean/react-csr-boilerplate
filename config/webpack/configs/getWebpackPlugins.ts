@@ -1,13 +1,13 @@
-import { Plugin as WebpackPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin, { Options as HtmlWebpackPluginOptions } from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { DefinePlugin } from 'webpack';
+import * as paths from '../../paths';
+import { Env } from '../../Env';
+import { Configuration } from '../webpack.types';
 
-import paths from '../../paths';
-import Env from '../../Env';
-
-export default function getWebpackPlugins(env: Env): WebpackPlugin[] {
-  const plugins: WebpackPlugin[] = [];
+export function getWebpackPlugins(env: Env): Configuration['plugins'] {
+  const plugins = [];
 
   const minifyHtmlWebpackPlugin = ((): HtmlWebpackPluginOptions['minify'] => {
     if (env.IS_PRODUCTION) {
@@ -28,14 +28,16 @@ export default function getWebpackPlugins(env: Env): WebpackPlugin[] {
     return undefined;
   })();
 
-  const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  plugins.push(new DefinePlugin({
+    NODE_ENV: env.NODE_ENV,
+  }));
+
+  plugins.push(new HtmlWebpackPlugin({
     favicon: paths.appFavicon,
     minify: minifyHtmlWebpackPlugin,
     template: paths.appHtml,
     title: 'Awesome Boilerplate',
-  });
-
-  plugins.push(htmlWebpackPlugin);
+  }));
 
   if (env.IS_PRODUCTION) {
     plugins.push(new MiniCssExtractPlugin({
@@ -51,5 +53,5 @@ export default function getWebpackPlugins(env: Env): WebpackPlugin[] {
     }
   }
 
-  return plugins;
+  return plugins as Configuration['plugins'];
 }

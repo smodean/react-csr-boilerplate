@@ -1,11 +1,7 @@
-import { createAsyncAction } from 'typesafe-actions';
-
 import { LanguageDictionariesKeys } from '@localization';
+
+import { createAction } from 'typesafe-actions';
 
 import { LOCALIZATION_TYPES } from './types';
 
-export const changeLocalizationAsync = createAsyncAction(
-  LOCALIZATION_TYPES.CHANGE_LOCALIZATION_REQUEST,
-  LOCALIZATION_TYPES.CHANGE_LOCALIZATION_SUCCESS,
-  LOCALIZATION_TYPES.CHANGE_LOCALIZATION_FAILURE,
-)<LanguageDictionariesKeys, LanguageDictionariesKeys, Error>();
+export const changeLocalization = createAction(LOCALIZATION_TYPES.CHANGE_LOCALIZATION)<LanguageDictionariesKeys>();

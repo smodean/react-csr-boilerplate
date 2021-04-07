@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import PrivateRoutes from './PrivateRoutes';
-import PublicRoutes from './PublicRoutes';
+// import PrivateRoutes from './PrivateRoutes';
+import { PublicRoutes } from './PublicRoutes';
 
-const Routes: FC = () => {
-  const routes = ((): JSX.Element => {
-    if (false) {
-      return <PrivateRoutes />;
-    }
+export const Routes: FC = () => {
+  const routes = ((): JSX.Element =>
+  // if (false) {
+  //   return <PrivateRoutes />;
+  // }
 
-    return <PublicRoutes />;
-  })();
+    <PublicRoutes />
+  )();
 
   return (
     <Router>
@@ -22,4 +22,4 @@ const Routes: FC = () => {
   );
 };
 
-export default Routes;
+Routes.displayName = 'Routes';

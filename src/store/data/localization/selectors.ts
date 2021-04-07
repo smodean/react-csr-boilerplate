@@ -1,8 +1,10 @@
-import { createSelector } from 'reselect';
 import { LocalizationDictionary } from '@@LocalizationDictionary';
 
-import languageDictionaries from '@localization';
+import { languageDictionaries } from '@localization';
+
 import { rootStoreBranchSelector } from '@utils/rootStoreBranchSelector';
+
+import { createSelector } from 'reselect';
 
 export const localizationSelector = rootStoreBranchSelector('localization');
 

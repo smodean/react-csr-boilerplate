@@ -1,16 +1,18 @@
-import React, { FC } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-
 import { PUBLIC_ROUTES_WAYS } from '@constants/RoutesWays';
-import PublicRoutesLoadable from './PublicRoutes.loadable';
+import { Login } from '@pages/Login';
 
-const { Login } = new PublicRoutesLoadable();
+import React, { FC } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
-const PublicRoutes: FC = () => (
+export const PublicRoutes: FC = () => (
   <>
-    <Route exact path={PUBLIC_ROUTES_WAYS.LOGIN} component={Login} />
-    <Route path="*" render={(): JSX.Element => <Redirect to={PUBLIC_ROUTES_WAYS.LOGIN} />} />
+    <Route path={PUBLIC_ROUTES_WAYS.LOGIN} component={Login} />
+    <Route path="/qqq" component={Login} />
+
+    <Route>
+      <Redirect to={PUBLIC_ROUTES_WAYS.LOGIN} />
+    </Route>
   </>
 );
 
-export default PublicRoutes;
+PublicRoutes.displayName = 'PublicRoutes';

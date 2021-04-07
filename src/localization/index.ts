@@ -1,12 +1,10 @@
-import ru from './ru';
-import en from './en';
+import { en } from './en';
+import { ru } from './ru';
 
-const languageDictionaries = Object.freeze({
+export const languageDictionaries = Object.freeze({
   en,
   ru,
 } as const);
 
 export type LanguageDictionaries = typeof languageDictionaries;
 export type LanguageDictionariesKeys = keyof LanguageDictionaries;
-
-export default languageDictionaries;

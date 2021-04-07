@@ -1,25 +1,19 @@
-# Dependencies install
-
-```bash
-  yarn
-```
-
 # Scripts
 
 ## Run dev server
 
 ```bash
-  yarn start
+  npm start
 ```
 
 ## Build
 
 ```bash
-  yarn build
+  npm run build
 ```
 
 ## Lint files files
 
 ```bash
-  yarn lint
+  npm run lint
 ```

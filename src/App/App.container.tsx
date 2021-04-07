@@ -1,19 +1,21 @@
+import { Routes } from '@Routes';
+
+import { ConfigureStore } from '@store/ConfigureStore';
+
 import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 
-import Routes from '@Routes';
+import { AppHead } from './AppHead';
 
-import configureStore from '@store/configureStore';
+const configureStore = new ConfigureStore();
 
-import AppHead from './AppHead';
+configureStore.runEpic();
 
-const { store } = configureStore();
-
-const App: FC = () => (
-  <Provider store={store}>
+export const App: FC = () => (
+  <Provider store={configureStore.store}>
     <AppHead />
     <Routes />
   </Provider>
 );
 
-export default App;
+App.displayName = 'App';

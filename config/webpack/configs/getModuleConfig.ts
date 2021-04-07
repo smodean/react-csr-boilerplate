@@ -1,10 +1,9 @@
-import { Module as WebpackModule } from 'webpack';
-
 import {
   nodeModulesRegExp, tsJsRegExp, cssRegExp, imageRegExp, fontRegExp,
 } from '../../regEpx';
+import { Configuration } from '../webpack.types';
 
-export default function getModuleConfig(): WebpackModule {
+export function getModuleConfig(): Configuration['module'] {
   return {
     rules: [
       {

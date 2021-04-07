@@ -1,15 +1,15 @@
 import { config, DotenvParseOutput } from 'dotenv';
 
-import paths from './paths';
+import * as paths from './paths';
 
 interface EnvDefaults {
-  readonly DEV_SERVER_PORT: number;
+  readonly DEV_SERVER_PORT?: number;
   readonly PROXY_TARGET?: string;
   readonly OPEN_BROWSER?: boolean;
   readonly ANALYZE_BUNDLE?: boolean;
 }
 
-export default class Env implements EnvDefaults {
+export class Env implements EnvDefaults {
   private static getConfig(path: string): DotenvParseOutput {
     const { error, parsed } = config({ path });
 
@@ -42,9 +42,11 @@ export default class Env implements EnvDefaults {
     return defaultValue;
   }
 
-  public readonly IS_PRODUCTION = process.env.NODE_ENV === 'production';
+  public readonly NODE_ENV = process.env.NODE_ENV;
 
-  public readonly IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+  public readonly IS_PRODUCTION = this.NODE_ENV === 'production';
+
+  public readonly IS_DEVELOPMENT = this.NODE_ENV === 'development';
 
   public readonly DEV_SERVER_PORT: number;
 

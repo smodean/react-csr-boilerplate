@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import { useLocalizationDictionary } from '@hooks/localization/useLocalizationDictionary';
 
-import { useLocalizationDictionary } from '@hooks/useLocalization';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
-const Main: FC = () => {
+export const Main: FC = () => {
   const localizationDictionary = useLocalizationDictionary();
 
   return (
@@ -16,4 +16,4 @@ const Main: FC = () => {
   );
 };
 
-export default Main;
+Main.displayName = 'Main';

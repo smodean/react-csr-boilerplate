@@ -1,20 +1,24 @@
 import { resolve } from 'path';
-import { Resolve as WebpackResolve } from 'webpack';
+import { appTsConfig } from '../../paths';
+import { Configuration } from '../webpack.types';
 
-import paths from '../../paths';
+type DynamicObject = Record<string, string>;
 
-interface DynamicObject<V = string> {
-  [key: string]: V;
-}
+type TSConfig = {
+  compilerOptions: {
+    paths: DynamicObject;
+    baseUrl: string;
+  };
+};
 
-function getAliases(tsConfig: { compilerOptions: { paths: DynamicObject } }): DynamicObject {
+function getAliases(tsConfig: TSConfig): DynamicObject {
   const { compilerOptions } = tsConfig;
   const excessRegExp = /\/\*$/;
 
-  return Object.entries(compilerOptions.paths).reduce<DynamicObject>((accumulator, alias) => {
+  return Object.entries(compilerOptions.paths).reduce((accumulator, alias) => {
     const [aliasKey, aliasValuesCollection] = alias;
 
-    const aliasValue = aliasValuesCollection[0];
+    const [aliasValue] = aliasValuesCollection;
 
     const currentAliasValueCollection = aliasValue.replace(excessRegExp, '').split('/');
     const currentAliasKey = aliasKey.replace(excessRegExp, '');
@@ -23,15 +27,14 @@ function getAliases(tsConfig: { compilerOptions: { paths: DynamicObject } }): Dy
       return accumulator;
     }
 
-    return {
-      ...accumulator,
-      [currentAliasKey]: resolve(paths.appSrc, ...currentAliasValueCollection),
-    };
-  }, {});
+    accumulator[currentAliasKey] = resolve(compilerOptions.baseUrl, ...currentAliasValueCollection);
+
+    return accumulator;
+  }, {} as DynamicObject);
 }
 
-export default function getResolveConfig(): WebpackResolve {
-  const tsConfig = require(paths.appTsConfig);
+export function getResolveConfig(): Configuration['resolve'] {
+  const tsConfig = require(appTsConfig);
 
   return {
     alias: getAliases(tsConfig),

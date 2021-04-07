@@ -1,30 +1,29 @@
-import { filter, map } from 'rxjs/operators';
-import { combineEpics } from 'redux-observable';
-import { isActionOf } from 'typesafe-actions';
+import { EpicType } from '@@EpicType';
+
 import { locale } from 'dayjs';
+import { combineEpics } from 'redux-observable';
+import { EMPTY } from 'rxjs';
+import { filter, mergeMap } from 'rxjs/operators';
+import { isActionOf } from 'typesafe-actions';
+
+import { changeLocalization } from './actions';
 
 import 'dayjs/locale/es';
 import 'dayjs/locale/ru';
 
-import { EpicType } from '@@EpicType';
-
-import { changeLocalizationAsync } from './actions';
-
 export const changeLocalizationEpic: EpicType = (action$) => action$.pipe(
-  filter(isActionOf(changeLocalizationAsync.request)),
-  map((action) => {
+  filter(isActionOf(changeLocalization)),
+  mergeMap((action) => {
     const { payload } = action;
 
     localStorage.setItem('locale', payload);
 
     locale(payload);
 
-    return changeLocalizationAsync.success(payload);
+    return EMPTY;
   }),
 );
 
-const localizationEpics = combineEpics(...Object.values({
+export const localizationEpics = combineEpics(...Object.values({
   changeLocalizationEpic,
 }));
-
-export default localizationEpics;

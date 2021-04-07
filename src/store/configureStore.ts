@@ -1,19 +1,34 @@
-import { applyMiddleware, createStore } from 'redux';
+import { RootActionType } from '@@RootAction';
+import { RootState } from '@@RootState';
+
+import { epicMiddleware, middlewareCollection } from '@store/middleware';
+import { rootEpic } from '@storeData/rootEpic';
+import { rootReducer } from '@storeData/rootReducer';
+
+import { Store, applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from '@storeData/rootReducer';
-import rootEpic from '@storeData/rootEpic';
+export class ConfigureStore {
+  public readonly store: Store<RootState, RootActionType>;
 
-import middlewaresCollection, { epicMiddleware } from '@store/middlewares';
+  private readonly epicMiddleware = epicMiddleware;
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default function configureStore() {
-  const store = createStore(
-    rootReducer,
-    composeWithDevTools(applyMiddleware(...middlewaresCollection)),
-  );
+  private readonly rootReducer = rootReducer;
 
-  epicMiddleware.run(rootEpic);
+  public constructor() {
+    this.store = this.createStore();
+  }
 
-  return { store };
+  public runEpic(): this {
+    this.epicMiddleware.run(rootEpic);
+
+    return this;
+  }
+
+  private createStore(): Store<RootState, RootActionType> {
+    return createStore(
+      this.rootReducer,
+      composeWithDevTools(applyMiddleware(...middlewareCollection)),
+    );
+  }
 }

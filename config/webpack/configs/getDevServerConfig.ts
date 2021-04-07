@@ -1,9 +1,9 @@
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
-import Env from '../../Env';
-import paths from '../../paths';
+import { Env } from '../../Env';
+import * as paths from '../../paths';
 
-export default function getDevServerConfig(env: Env): WebpackDevServerConfiguration | undefined {
+export function getDevServerConfig(env: Env): WebpackDevServerConfiguration | undefined {
   if (env.IS_PRODUCTION) {
     return undefined;
   }
