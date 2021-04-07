@@ -1,5 +1,5 @@
-import * as localizationActions from '@storeData/localization/actions';
-import * as purgeActions from '@storeData/purge/actions';
+import * as localizationActions from '@store/data/localization/actions';
+import * as purgeActions from '@store/data/purge/actions';
 
 export const rootAction = {
   ...localizationActions,

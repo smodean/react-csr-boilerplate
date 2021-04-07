@@ -1,4 +1,4 @@
-import { EpicType } from '@@EpicType';
+import { EpicType } from '@models/EpicType';
 
 import { locale } from 'dayjs';
 import { combineEpics } from 'redux-observable';

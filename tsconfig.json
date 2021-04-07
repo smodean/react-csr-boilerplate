@@ -21,10 +21,6 @@
     "typeRoots": ["src/@types", "@types", "node_modules/@types"],
     "types": ["node", "jest"],
     "paths": {
-      "@@EpicType": ["models/EpicType"],
-      "@@LocalizationDictionary": ["models/LocalizationDictionary"],
-      "@@RootAction": ["models/RootAction"],
-      "@@RootState": ["models/RootState"],
       "@App": ["App"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
@@ -36,7 +32,6 @@
       "@resources/*": ["resources/*"],
       "@Routes": ["Routes"],
       "@store/*": ["store/*"],
-      "@storeData/*": ["store/data/*"],
       "@utils/*": ["utils/*"]
     }
   },

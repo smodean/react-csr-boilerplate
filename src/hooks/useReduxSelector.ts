@@ -1,4 +1,4 @@
-import { RootState } from '@@RootState';
+import { RootState } from '@models/RootState';
 
 import { useSelector } from 'react-redux';
 

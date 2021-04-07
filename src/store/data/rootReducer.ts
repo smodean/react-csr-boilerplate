@@ -1,4 +1,4 @@
-import { localizationReducer } from '@storeData/localization/reducer';
+import { localizationReducer } from '@store/data/localization/reducer';
 
 import { combineReducers } from 'redux';
 

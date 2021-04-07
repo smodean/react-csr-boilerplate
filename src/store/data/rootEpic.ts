@@ -1,4 +1,4 @@
-import { localizationEpics } from '@storeData/localization/epics';
+import { localizationEpics } from '@store/data/localization/epics';
 
 import { combineEpics } from 'redux-observable';
 

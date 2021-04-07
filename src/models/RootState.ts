@@ -1,4 +1,4 @@
-import { rootReducer } from '@storeData/rootReducer';
+import { rootReducer } from '@store/data/rootReducer';
 
 import { StateType } from 'typesafe-actions';
 

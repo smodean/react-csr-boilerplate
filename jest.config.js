@@ -2,10 +2,6 @@ module.exports = {
   collectCoverageFrom: ['config/**/*.{js,jsx,ts,tsx}', 'src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'jsx', 'node'],
   moduleNameMapper: {
-    '^@@EpicType': '<rootDir>/src/models/EpicType.ts',
-    '^@@LocalizationDictionary': '<rootDir>/src/models/LocalizationDictionary.ts',
-    '^@@RootAction': '<rootDir>/src/models/RootAction.ts',
-    '^@@RootState': '<rootDir>/src/models/RootState.ts',
     '^@App': '<rootDir>/src/App/index.ts',
     '^@Routes': '<rootDir>/src/Routes/index.ts',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
@@ -17,7 +13,6 @@ module.exports = {
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@resources/(.*)$': '<rootDir>/src/resources/$1',
     '^@store/(.*)$': '<rootDir>/src/store/$1',
-    '^@storeData/(.*)$': '<rootDir>/src/store/data/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   modulePaths: [],

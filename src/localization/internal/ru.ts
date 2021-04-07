@@ -1,4 +1,4 @@
-import { LocalizationDictionary } from '@@LocalizationDictionary';
+import { LocalizationDictionary } from '@models/LocalizationDictionary';
 
 export const ru: LocalizationDictionary = {
   LOADING: 'Загрузка...',

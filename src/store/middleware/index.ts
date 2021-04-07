@@ -1,5 +1,5 @@
-import { DispatchRootActionType, RootAction } from '@@RootAction';
-import { RootState } from '@@RootState';
+import { DispatchRootActionType, RootAction } from '@models/RootAction';
+import { RootState } from '@models/RootState';
 
 import { Middleware } from 'redux';
 

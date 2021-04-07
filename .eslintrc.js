@@ -25,6 +25,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   rules: {
+    '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/no-shadow': 'error',
     'implicit-arrow-linebreak': 'off',
     'import/extensions': [
@@ -99,7 +100,25 @@ module.exports = {
         extensions: ['.tsx'],
       },
     ],
+    'react/jsx-sort-props': [
+      'error',
+      {
+        callbacksLast: true,
+        ignoreCase: false,
+        shorthandFirst: true,
+      },
+    ],
     'react/prop-types': 'off',
+    'sort-imports': [
+      'error',
+      {
+        allowSeparatedGroups: false,
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      },
+    ],
     'sort-keys': [
       'error',
       'asc',

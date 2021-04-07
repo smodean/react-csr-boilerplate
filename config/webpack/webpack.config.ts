@@ -10,7 +10,7 @@ import { getWebpackPlugins } from './configs/getWebpackPlugins';
 import { Configuration } from './webpack.types';
 
 const env = new Env({
-  DEV_SERVER_PORT: 3000,
+  DEV_SERVER_PORT: '8080',
 });
 
 const config: Configuration = {

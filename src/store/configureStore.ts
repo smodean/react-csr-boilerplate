@@ -1,11 +1,10 @@
-import { RootActionType } from '@@RootAction';
-import { RootState } from '@@RootState';
-
+import { RootActionType } from '@models/RootAction';
+import { RootState } from '@models/RootState';
+import { rootEpic } from '@store/data/rootEpic';
+import { rootReducer } from '@store/data/rootReducer';
 import { epicMiddleware, middlewareCollection } from '@store/middleware';
-import { rootEpic } from '@storeData/rootEpic';
-import { rootReducer } from '@storeData/rootReducer';
 
-import { Store, applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 export class ConfigureStore {
@@ -19,10 +18,8 @@ export class ConfigureStore {
     this.store = this.createStore();
   }
 
-  public runEpic(): this {
+  public runEpic(): void {
     this.epicMiddleware.run(rootEpic);
-
-    return this;
   }
 
   private createStore(): Store<RootState, RootActionType> {

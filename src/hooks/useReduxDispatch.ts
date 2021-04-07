@@ -1,4 +1,4 @@
-import { DispatchRootActionType } from '@@RootAction';
+import { DispatchRootActionType } from '@models/RootAction';
 
 import { useDispatch } from 'react-redux';
 

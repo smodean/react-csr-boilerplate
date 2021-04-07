@@ -1,8 +1,7 @@
-import { LocalizationDictionary } from '@@LocalizationDictionary';
-
 import { useReduxSelector } from '@hooks/useReduxSelector';
-import { localeDictionarySelector } from '@store/data/localization/selectors';
+import { LocalizationDictionary } from '@models/LocalizationDictionary';
+import { localizationDictionarySelector } from '@store/data/localization/selectors/smart/localizationDictionarySelector';
 
 export function useLocalizationDictionary(): LocalizationDictionary {
-  return useReduxSelector<LocalizationDictionary>(localeDictionarySelector);
+  return useReduxSelector<LocalizationDictionary>(localizationDictionarySelector);
 }

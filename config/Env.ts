@@ -2,14 +2,41 @@ import { config, DotenvParseOutput } from 'dotenv';
 
 import * as paths from './paths';
 
-interface EnvDefaults {
-  readonly DEV_SERVER_PORT?: number;
-  readonly PROXY_TARGET?: string;
-  readonly OPEN_BROWSER?: boolean;
-  readonly ANALYZE_BUNDLE?: boolean;
-}
+type EnvDefaults = Partial<Record<'DEV_SERVER_PORT' | 'PROXY_TARGET' | 'OPEN_BROWSER' | 'ANALYZE_BUNDLE', string>>;
 
-export class Env implements EnvDefaults {
+export class Env {
+  public readonly NODE_ENV = process.env.NODE_ENV;
+
+  public readonly IS_PRODUCTION = this.NODE_ENV === 'production';
+
+  public readonly IS_DEVELOPMENT = this.NODE_ENV === 'development';
+
+  public readonly DEV_SERVER_PORT: number;
+
+  public readonly PROXY_TARGET?: string;
+
+  public readonly OPEN_BROWSER: boolean;
+
+  public readonly ANALYZE_BUNDLE: boolean;
+
+  public readonly dotEnvConfig: DotenvParseOutput;
+
+  private readonly defaults: EnvDefaults;
+
+  public constructor(defaults: EnvDefaults) {
+    this.defaults = defaults;
+
+    this.dotEnvConfig = this.loadEnvConfig();
+
+    this.DEV_SERVER_PORT = this.getDevServerPort();
+
+    this.PROXY_TARGET = this.getProxyTarget();
+
+    this.OPEN_BROWSER = !!process.env.OPEN_BROWSER;
+
+    this.ANALYZE_BUNDLE = !!process.env.OPEN_BROWSER;
+  }
+
   private static getConfig(path: string): DotenvParseOutput {
     const { error, parsed } = config({ path });
 
@@ -30,50 +57,6 @@ export class Env implements EnvDefaults {
     return `\n\t${first}\n\t${middle}\n\t${last}\n`;
   }
 
-  private static parseStringToBoolean(value: string | undefined, defaultValue: boolean): boolean {
-    if (value === 'true' || value === 'false') {
-      return JSON.parse(value);
-    }
-
-    if (value) {
-      return Boolean(value);
-    }
-
-    return defaultValue;
-  }
-
-  public readonly NODE_ENV = process.env.NODE_ENV;
-
-  public readonly IS_PRODUCTION = this.NODE_ENV === 'production';
-
-  public readonly IS_DEVELOPMENT = this.NODE_ENV === 'development';
-
-  public readonly DEV_SERVER_PORT: number;
-
-  public readonly PROXY_TARGET?: string;
-
-  public readonly OPEN_BROWSER: boolean;
-
-  public readonly ANALYZE_BUNDLE: boolean;
-
-  public readonly dotEnvConfig: DotenvParseOutput;
-
-  private readonly defaults: EnvDefaults;
-
-  constructor(defaults: EnvDefaults) {
-    this.defaults = defaults;
-
-    this.dotEnvConfig = this.loadEnvConfig();
-
-    this.DEV_SERVER_PORT = this.getDevServerPort();
-
-    this.PROXY_TARGET = this.getProxyTarget();
-
-    this.OPEN_BROWSER = this.getOpenBrowser();
-
-    this.ANALYZE_BUNDLE = this.getAnalyzeBundle();
-  }
-
   private getProxyTarget(): Env['PROXY_TARGET'] {
     return process.env.PROXY_TARGET || this.defaults.PROXY_TARGET;
   }
@@ -82,14 +65,6 @@ export class Env implements EnvDefaults {
     const { DEV_SERVER_PORT = `${this.defaults.DEV_SERVER_PORT}` } = process.env;
 
     return parseInt(DEV_SERVER_PORT, 10);
-  }
-
-  private getOpenBrowser(): Env['OPEN_BROWSER'] {
-    return Env.parseStringToBoolean(process.env.OPEN_BROWSER, Boolean(this.defaults.OPEN_BROWSER));
-  }
-
-  private getAnalyzeBundle(): Env['ANALYZE_BUNDLE'] {
-    return Env.parseStringToBoolean(process.env.ANALYZE_BUNDLE, Boolean(this.defaults.ANALYZE_BUNDLE));
   }
 
   private loadEnvConfig(): DotenvParseOutput {

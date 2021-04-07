@@ -1,5 +1,4 @@
-import { RootState } from '@@RootState';
-
+import { RootState } from '@models/RootState';
 import { rootStateMock } from '@store/data/__mocks__/rootState.mock';
 
 import { CombinedState } from 'redux';

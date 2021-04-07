@@ -1,4 +1,4 @@
-import { RootActionType } from '@@RootAction';
+import { RootActionType } from '@models/RootAction';
 
 import { createReducer } from 'typesafe-actions';
 

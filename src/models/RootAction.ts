@@ -1,4 +1,4 @@
-import { rootAction } from '@storeData/rootAction';
+import { rootAction } from '@store/data/rootAction';
 
 import { Dispatch } from 'redux';
 import { ActionType } from 'typesafe-actions';

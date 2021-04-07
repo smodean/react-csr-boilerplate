@@ -1,4 +1,4 @@
-import { KeyOfRootState, RootState } from '@@RootState';
+import { KeyOfRootState, RootState } from '@models/RootState';
 
 export const rootStoreBranchSelector = <
   BranchName extends KeyOfRootState,
