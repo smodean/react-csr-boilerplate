@@ -25,6 +25,7 @@ HELP.md
 /dist/
 /nbdist/
 /.nb-gradle/
+/coverage/
 
 ### VS Code ###
 .vscode/
@@ -44,3 +45,4 @@ node_modules
 ### yarn ###
 
 yarn-error.log
+yarn.lock

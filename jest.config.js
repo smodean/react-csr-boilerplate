@@ -1,5 +1,18 @@
 module.exports = {
-  collectCoverageFrom: ['config/**/*.{js,jsx,ts,tsx}', 'src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
+  collectCoverage: true,
+  collectCoverageFrom: [
+    './**/*.{js,jsx,ts,tsx}',
+    '!src/index.ts',
+    '!src/store/middleware/loggerMiddleware/loggerMiddleware.ts',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'jsx', 'node'],
   moduleNameMapper: {
     '^@App': '<rootDir>/src/App/index.ts',
