@@ -30,7 +30,6 @@
     "@types/node": "^14.14.37",
     "@types/react-dom": "^17.0.3",
     "@types/react-helmet": "^6.1.0",
-    "@types/react-loadable": "^5.5.5",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux-logger": "^3.0.8",
@@ -43,6 +42,7 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.0",
+    "cypress": "^7.0.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.23.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -71,7 +71,7 @@
   "name": "bp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/smodean/awesome-boilerplates"
+    "url": "https://github.com/smodean/react-csr-boilerplate"
   },
   "scripts": {
     "build": "npm run clear && cross-env NODE_ENV=production webpack --config config/webpack/webpack.config.ts",

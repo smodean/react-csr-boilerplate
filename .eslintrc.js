@@ -7,7 +7,7 @@ module.exports = {
   extends: ['airbnb', 'airbnb/hooks', 'plugin:@typescript-eslint/recommended'],
   overrides: [
     {
-      files: ['config/**/*.ts'],
+      files: ['config/**/*.ts', 'jest.config.js'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
         'global-require': 'off',

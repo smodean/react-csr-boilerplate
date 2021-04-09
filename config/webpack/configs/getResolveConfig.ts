@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+
 import { appTsConfig } from '../../paths';
 import { Configuration } from '../webpack.types';
 
