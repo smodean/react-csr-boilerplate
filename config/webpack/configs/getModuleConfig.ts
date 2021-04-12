@@ -1,5 +1,5 @@
 import {
-  nodeModulesRegExp, tsJsRegExp, cssRegExp, imageRegExp, fontRegExp,
+  cssRegExp, fontRegExp, imageRegExp, nodeModulesRegExp, tsJsRegExp,
 } from '../../regEpx';
 import { Configuration } from '../webpack.types';
 

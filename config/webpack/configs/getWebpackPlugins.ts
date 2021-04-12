@@ -1,9 +1,10 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin, { Options as HtmlWebpackPluginOptions } from 'html-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DefinePlugin } from 'webpack';
-import * as paths from '../../paths';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 import { Env } from '../../Env';
+import * as paths from '../../paths';
 import { Configuration } from '../webpack.types';
 
 export function getWebpackPlugins(env: Env): Configuration['plugins'] {
