@@ -1,5 +1,5 @@
 import { Env } from '../Env';
-import * as paths from '../paths';
+import { appBrowser } from '../paths';
 
 import { getDevServerConfig } from './configs/getDevServerConfig';
 import { getModuleConfig } from './configs/getModuleConfig';
@@ -16,7 +16,7 @@ const env = new Env({
 const config: Configuration = {
   devServer: getDevServerConfig(env),
   devtool: env.IS_PRODUCTION ? 'source-map' : 'cheap-module-source-map',
-  entry: paths.appSrc,
+  entry: appBrowser,
   mode: (env.NODE_ENV as Configuration['mode']),
   module: getModuleConfig(),
   optimization: getOptimizationConfig(),

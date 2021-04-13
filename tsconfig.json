@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
@@ -18,21 +18,11 @@
     "strict": true,
     "removeComments": true,
     "target": "esnext",
-    "typeRoots": ["src/@types", "@types", "node_modules/@types"],
+    "typeRoots": ["@types", "node_modules/@types", "src/shared/@types"],
     "types": ["node", "jest"],
     "paths": {
-      "@App": ["App"],
-      "@components/*": ["components/*"],
-      "@constants/*": ["constants/*"],
-      "@hooks/*": ["hooks/*"],
-      "@localization": ["localization"],
-      "@localization/*": ["localization/*"],
-      "@models/*": ["models/*"],
-      "@pages/*": ["pages/*"],
-      "@resources/*": ["resources/*"],
-      "@Routes": ["Routes"],
-      "@store/*": ["store/*"],
-      "@utils/*": ["utils/*"]
+      "@browser/*": ["src/browser/*"],
+      "@shared/*": ["src/shared/*"],
     }
   },
   "exclude": ["node_modules"]

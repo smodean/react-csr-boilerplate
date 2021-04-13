@@ -8,7 +8,7 @@ import * as paths from '../../paths';
 import { Configuration } from '../webpack.types';
 
 export function getWebpackPlugins(env: Env): Configuration['plugins'] {
-  const plugins = [];
+  const plugins = Array.of();
 
   const minifyHtmlWebpackPlugin = ((): HtmlWebpackPluginOptions['minify'] => {
     if (env.IS_PRODUCTION) {
