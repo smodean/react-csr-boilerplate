@@ -1,7 +1,7 @@
 import { PRIVATE_ROUTES_WAYS } from '@shared/constants/RoutesWays';
 import { Main } from '@shared/pages/Main';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 export const PrivateRoutes: FC = () => (

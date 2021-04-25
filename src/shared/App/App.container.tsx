@@ -1,20 +1,20 @@
 import { Routes } from '@shared/Routes';
-import { ConfigureStore } from '@shared/store';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Provider } from 'react-redux';
 
+import { AppProps } from './App.types';
 import { AppHead } from './AppHead';
 
-const configureStore = new ConfigureStore();
+export const App: FC<AppProps> = (props) => {
+  const { store } = props;
 
-configureStore.runEpic();
-
-export const App: FC = () => (
-  <Provider store={configureStore.store}>
-    <AppHead />
-    <Routes />
-  </Provider>
-);
+  return (
+    <Provider store={store}>
+      <AppHead />
+      <Routes />
+    </Provider>
+  );
+};
 
 App.displayName = 'App';

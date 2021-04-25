@@ -1,6 +1,6 @@
 import { useLocalizationDictionary } from '@shared/hooks/localization/useLocalizationDictionary';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
 export const Login: FC = () => {

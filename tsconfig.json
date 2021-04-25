@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["es6", "esnext", "DOM"],
     "module": "commonjs",
     "moduleResolution": "node",

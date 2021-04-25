@@ -108,7 +108,9 @@ module.exports = {
         shorthandFirst: true,
       },
     ],
+    'react/jsx-uses-react': 'off',
     'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
     'sort-imports': [
       'error',
       {
